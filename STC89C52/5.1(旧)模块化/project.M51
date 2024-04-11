@@ -1,0 +1,149 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        10/23/2023  15:53:18  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+F:\\C51\BIN\BL51.EXE main.obj, time.obj, number.obj TO project RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  main.obj (MAIN)
+  time.obj (TIME)
+  number.obj (NUMBER)
+  F:\\C51\LIB\C51S.LIB (?C_STARTUP)
+  F:\\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  project (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0014H     UNIT         ?DT?NUMBER
+            IDATA   001CH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     008CH     UNIT         ?C_C51STARTUP
+            CODE    088CH     006CH     UNIT         ?PR?_NIXIE?NUMBER
+            CODE    08F8H     0052H     UNIT         ?PR?MAIN?MAIN
+            CODE    094AH     0017H     UNIT         ?C_INITSEG
+            CODE    0961H     0015H     UNIT         ?PR?_DELAY?TIME
+
+
+
+OVERLAY MAP OF MODULE:   project (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN
+  +--> ?PR?_NIXIE?NUMBER
+  +--> ?PR?_DELAY?TIME
+
+?PR?_NIXIE?NUMBER
+  +--> ?PR?_DELAY?TIME
+
+
+
+SYMBOL TABLE OF MODULE:  project (MAIN)
+
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/23/2023  15:53:18  PAGE 2
+
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:08F8H         PUBLIC        main
+  -------         PROC          MAIN
+  C:08F8H         LINE#         59
+  C:08F8H         LINE#         60
+  C:08F8H         LINE#         61
+  C:08F8H         LINE#         62
+  C:08F8H         LINE#         63
+  C:0901H         LINE#         64
+  C:0908H         LINE#         65
+  C:0911H         LINE#         66
+  C:0918H         LINE#         67
+  C:0921H         LINE#         68
+  C:0928H         LINE#         69
+  C:0931H         LINE#         70
+  C:0938H         LINE#         71
+  C:0941H         LINE#         72
+  C:0948H         LINE#         73
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        TIME
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0961H         PUBLIC        _delay
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        xms
+  -------         DO            
+  D:0005H         SYMBOL        i
+  D:0004H         SYMBOL        j
+  -------         ENDDO         
+  C:0961H         LINE#         2
+  C:0961H         LINE#         3
+  C:0961H         LINE#         5
+  C:096BH         LINE#         6
+  C:096BH         LINE#         7
+  C:096DH         LINE#         8
+  C:096FH         LINE#         10
+  C:096FH         LINE#         11
+  C:0971H         LINE#         12
+  C:0973H         LINE#         13
+  C:0975H         LINE#         15
+  -------         ENDPROC       _DELAY
+  -------         ENDMOD        TIME
+
+  -------         MODULE        NUMBER
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:088CH         PUBLIC        _Nixie
+  D:0080H         PUBLIC        P0
+  D:0008H         PUBLIC        Nixietable
+  B:00A0H.2       PUBLIC        P2_2
+  B:00A0H.3       PUBLIC        P2_3
+  B:00A0H.4       PUBLIC        P2_4
+  -------         PROC          _NIXIE
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/23/2023  15:53:18  PAGE 3
+
+
+  D:0007H         SYMBOL        Location
+  D:0004H         SYMBOL        Number
+  C:088CH         LINE#         4
+  C:088CH         LINE#         5
+  C:088CH         LINE#         6
+  C:08B9H         LINE#         7
+  C:08B9H         LINE#         8
+  C:08BDH         LINE#         9
+  C:08C1H         LINE#         10
+  C:08C5H         LINE#         11
+  C:08C9H         LINE#         12
+  C:08D1H         LINE#         13
+  C:08D9H         LINE#         14
+  C:08E1H         LINE#         15
+  C:08E7H         LINE#         16
+  C:08E7H         LINE#         18
+  -------         ENDPROC       _NIXIE
+  -------         ENDMOD        NUMBER
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00E9H BYTE (11%) *
+******************************************************************************
+
+Program Size: data=29.0 xdata=0 code=377
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

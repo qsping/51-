@@ -1,0 +1,97 @@
+C51 COMPILER V9.00   MAIN                                                                  10/25/2023 15:50:05 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: F:\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "time.h"
+   3          #include "LCD1602.h"
+   4          #include "mkey.h"
+   5          unsigned int  password,count,A;
+   6          unsigned char keynumber ;
+   7          
+   8          void main()
+   9          {       
+  10   1                      LCD_Init();
+  11   1                      LCD_ShowString(1,1,"password:");
+  12   1                      while(1)
+  13   1                      {                                
+  14   2                              keynumber=mkey();
+  15   2                              if(keynumber)
+  16   2                              {
+  17   3                                      if(keynumber<=10)
+  18   3                                      {
+  19   4                                              if(count<=1)//输入次数小于4
+  20   4                                              {
+  21   5                                                      password*=10;                   //  密码移位
+  22   5                                                      password+=keynumber%10; //　获取一位密码
+  23   5                                                      count++;
+  24   5                                              }  
+  25   4                                              LCD_ShowNum(2,1,password,2);                                                                                                                    
+  26   4                                      } 
+  27   3                                      
+  28   3                                      if (count==2)
+  29   3                                      {                                       
+  30   4                                              if (password==24)
+  31   4                                                      {
+  32   5                                                              LCD_ShowString(1,13,"KOBE");
+  33   5                                                              password=0;
+  34   5                                                              count=0;
+  35   5                                                              delay(1000);
+  36   5                                                              LCD_ShowNum(2,1,password,2);
+  37   5                                                      //      LCD_ShowString(1,13,"    ");    
+  38   5                                                      }
+  39   4                                              else
+  40   4                                                      {
+  41   5                                                              LCD_ShowString(1,13,"FALL");
+  42   5                                                              password=0;
+  43   5                                                              count=0;
+  44   5                                                              delay(1000);
+  45   5                                                              LCD_ShowNum(2,1,password,2);
+  46   5                                                              LCD_ShowString(1,13,"    ");
+  47   5                                                      }
+  48   4                              
+  49   4                                                              
+  50   4                                        }
+  51   3                                              
+  52   3                                      if (keynumber==12)
+  53   3                                              {       
+  54   4                                                      if(password!=0)
+  55   4                                                      {
+C51 COMPILER V9.00   MAIN                                                                  10/25/2023 15:50:05 PAGE 2   
+
+  56   5                                                              password/=10;
+  57   5                                                              count--;
+  58   5                                                              LCD_ShowNum(2,1,password,4);
+  59   5                                                      }
+  60   4                                                                                                      
+  61   4                                              }                       
+  62   3              
+  63   3                              }
+  64   2                              
+  65   2                      
+  66   2                      }                
+  67   1      }
+  68                          
+  69                          
+  70          
+  71                          
+  72                  
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    267    ----
+   CONSTANT SIZE    =     25    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      7    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

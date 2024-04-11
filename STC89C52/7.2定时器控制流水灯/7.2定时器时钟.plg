@@ -1,0 +1,22 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\19745\Desktop\单片机\7.2定时器控制流水灯\7.2定时器时钟.uvproj
+Project File Date:  11/14/2023
+
+<h2>Output:</h2>
+Build target '目标 1'
+assembling STARTUP.A51...
+compiling main2...
+linking...
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  MAIN
+    MODULE:  F:\\C51\LIB\C51S.LIB (?C_INIT)
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  MAIN
+    MODULE:  F:\\C51\LIB\C51S.LIB (?C_INIT)
+    ADDRESS: 080DH
+Program Size: data=9.0 xdata=0 code=144
+"7.2定时器时钟" - 0 Error(s), 2 Warning(s).

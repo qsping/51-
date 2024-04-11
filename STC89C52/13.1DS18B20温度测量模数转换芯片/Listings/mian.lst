@@ -1,0 +1,98 @@
+C51 COMPILER V9.54   MIAN                                                                  03/25/2024 11:56:04 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE MIAN
+OBJECT MODULE PLACED IN .\Objects\mian.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE mian.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\mian
+                    -.lst) TABS(8) OBJECT(.\Objects\mian.obj)
+
+line level    source
+
+   1          #include <REGX52.H>
+   2          #include "delay.h"
+   3          #include "LCD1602.h"
+   4          #include "DS18B20.h"
+   5          #include "Nixie.h"
+   6          #include "Timer0.h"
+   7          
+   8          float temp;
+   9          void Delay20us()        //@11.0592MHz
+  10          {
+  11   1              unsigned char i;
+  12   1      
+  13   1              i = 6;
+  14   1              while (--i);
+  15   1      }
+  16          
+  17          void main()
+  18          {
+  19   1              int i=0;
+  20   1              LCD_WriteCommand(0x0f);
+  21   1              DS18B20_ConverT();
+  22   1              for(i=0;i<200;i++)Delay5ms();
+  23   1              LCD_Init();
+  24   1              LCD_ShowString(1,1,"Temperature");
+  25   1              
+  26   1              while(1)        
+  27   1              {       
+  28   2                      
+  29   2                      DS18B20_ConverT();  
+  30   2                      temp=DS18B20_ReadT();
+  31   2                      if(temp<0)
+  32   2                      {
+  33   3                              LCD_ShowChar(2,1,'-');
+  34   3                      }
+  35   2                      else
+  36   2                      {
+  37   3                              LCD_ShowChar(2,1,'+');
+  38   3                      }
+  39   2                      LCD_ShowNum(2,2,temp,3);
+  40   2                      LCD_ShowChar(2,5,'.');
+  41   2                      LCD_ShowNum(2,6,(unsigned long)(temp*10000)%10000,4);
+  42   2      //              Nixie(1,temp/100);Delay20us();
+  43   2      //              Nixie(2,(unsigned long)(temp/10)%10);
+  44   2      //              Delay20us();
+  45   2      //              Nixie(3,(unsigned long)(temp*10)%10);
+  46   2      //              Delay20us();
+  47   2      //              Nixie(4,0x6F);
+  48   2      //              Delay20us();
+  49   2      //              Nixie(5,(unsigned long)(temp*100)%100);Delay20us();
+  50   2      //              Nixie(6,(unsigned long)(temp*1000)%1000);Delay20us();
+  51   2      //              Nixie(7,(unsigned long)(temp*10000)%10000);Delay20us();
+  52   2      //                              Nixie(1,1);Delay20us();
+  53   2                      Nixie(5,10);Delay20us();                
+  54   2      //              Nixie(3,0x62);Delay20us();
+C51 COMPILER V9.54   MIAN                                                                  03/25/2024 11:56:04 PAGE 2   
+
+  55   2      //              Nixie(4,0x77);Delay20us();              
+  56   2      //              Nixie(5,4);Delay20us();
+  57   2      //              Nixie(6,7);Delay20us();
+  58   2      //              Nixie(7,4);Delay20us();
+  59   2              }
+  60   1      }
+  61          //void Timer0_Routine() interrupt 1
+  62          //{
+  63          //      static unsigned int T0Count2;
+  64          //      TL0 = 0x18;             
+  65          //      TH0 = 0xFC;             
+  66          //      T0Count2++;
+  67          //      if(T0Count2>=2)
+  68          //      {
+  69          //              T0Count2=0;
+  70          //              Nixie_Loop();//2ms
+  71          //      }
+  72          //}
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    197    ----
+   CONSTANT SIZE    =     12    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

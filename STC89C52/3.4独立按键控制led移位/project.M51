@@ -1,0 +1,112 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        10/24/2023  19:09:59  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+F:\\C51\BIN\BL51.EXE main.obj TO project RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  main.obj (MAIN)
+  F:\\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  project (MAIN)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0032H     UNIT         ?PR?MAIN?MAIN
+            CODE    0832H     0015H     UNIT         ?PR?_DELAY?MAIN
+            CODE    0847H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   project (MAIN)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN
+  +--> ?PR?_DELAY?MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  project (MAIN)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  C:0832H         PUBLIC        _delay
+  B:00B0H.1       PUBLIC        P3_1
+  C:0800H         PUBLIC        main
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        xms
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/24/2023  19:09:59  PAGE 2
+
+
+  -------         DO            
+  D:0005H         SYMBOL        i
+  D:0007H         SYMBOL        j
+  -------         ENDDO         
+  C:0832H         LINE#         3
+  C:0832H         LINE#         4
+  C:0832H         LINE#         6
+  C:083CH         LINE#         7
+  C:0840H         LINE#         8
+  C:0842H         LINE#         10
+  C:0842H         LINE#         11
+  C:0844H         LINE#         12
+  C:0846H         LINE#         13
+  -------         ENDPROC       _DELAY
+  -------         PROC          MAIN
+  -------         DO            
+  D:0004H         SYMBOL        a
+  -------         ENDDO         
+  C:0800H         LINE#         14
+  C:0800H         LINE#         15
+  C:0800H         LINE#         16
+  C:0802H         LINE#         17
+  C:0805H         LINE#         18
+  C:0805H         LINE#         19
+  C:0805H         LINE#         20
+  C:0808H         LINE#         21
+  C:0808H         LINE#         22
+  C:080FH         LINE#         23
+  C:0812H         LINE#         24
+  C:0819H         LINE#         25
+  C:081AH         LINE#         26
+  C:0820H         LINE#         27
+  C:0820H         LINE#         28
+  C:0822H         LINE#         29
+  C:0822H         LINE#         30
+  C:0822H         LINE#         31
+  C:0830H         LINE#         34
+  C:0830H         LINE#         37
+  C:0830H         LINE#         41
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0047H BYTE ( 3%) *
+******************************************************************************
+
+Program Size: data=9.0 xdata=0 code=86
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,4 @@
+".\电机驱动\STARTUP.obj",
+".\电机驱动\main.obj" 
+TO ".\电机驱动\电机驱动" 
+PRINT(".\Listings\电机驱动.m51") RAMSIZE(256) 

@@ -1,0 +1,33 @@
+#include <REGX52.H>
+#include "LCD1602.h"
+
+void Timer0Init(void)		//1000??@11.0592MHz
+{
+
+	TMOD &= 0xF0;		//???????
+	TL0 = 0xCD;		//??????
+	TH0 = 0xD4;		//??????
+	TF0 = 0;		//??TF0??
+	TR0 = 1;
+     TF0=1;
+     ET0=1;
+     EA=1;
+     PT0=0;//???0????
+}
+
+void main ()
+{
+     LCD_Init();
+	Timer0Init();
+	
+	LCD_ShowString(1,1,"Clock:");	//??????????????
+	LCD_ShowString(2,1,"  :  :");
+
+     
+     
+     while(1)
+     {
+          
+     }
+}
+

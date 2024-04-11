@@ -1,0 +1,1 @@
+"..\7.2定时器控制流水灯\timer.c" OPTIMIZE (8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\timer.lst) TABS (8) OBJECT(.\Objects\timer.obj)
